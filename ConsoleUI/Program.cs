@@ -8,12 +8,14 @@ using DataAccess.Concrete.InMemory;
 
 CarManager carManager = new CarManager(new EfCarDal());
 
-foreach (var item in carManager.GetCarsByColorId(1))
+
+
+foreach (var item in carManager.GetCarDetails())
 {
-    Console.WriteLine(item.Description);
+    Console.WriteLine(item.CarName + "/" + item.BrandName + "/" + item.ColorName + "/" + item.DailyPrice);
 }
 
-foreach (var item in carManager.GetCarsByBrandId(1))
-{
-    Console.WriteLine(item.Description);
-}
+//foreach (var item in carManager.GetCarsByBrandId(1))
+//{
+//    Console.WriteLine(item.Name);
+//}

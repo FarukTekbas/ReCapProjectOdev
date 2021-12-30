@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,12 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>
             {
-                new Car{Id = 1,BrandId=1,ColorId=1,ModelYear=2010,DailyPrice=135000,Description="Beyaz Sedan BMW M4 Hatasız"},
-                new Car{Id = 2,BrandId=2,ColorId=1,ModelYear=2015,DailyPrice=100000,Description="Beyaz Sedan Renault Clio Hatasız"},
-                new Car{Id = 3,BrandId=3,ColorId=2,ModelYear=2021,DailyPrice=185000,Description="Mavi Station Mercedes C180 Kazalı"},
-                new Car{Id = 4,BrandId=2,ColorId=3,ModelYear=2020,DailyPrice=210000,Description="Siyah Sedan Renault Captur Hatasız"},
-                new Car{Id = 5,BrandId=5,ColorId=4,ModelYear=2018,DailyPrice=195000,Description="Beyaz Sedan Ford Focus Hasarlı"},
-                new Car{Id = 6,BrandId=3,ColorId=3,ModelYear=2010,DailyPrice=200000,Description="Siyah Station Mercedes E220 Hatasız"},
+                new Car{Id = 1,BrandId=1,ColorId=1,ModelYear=2010,DailyPrice=135000,Name="Beyaz Sedan BMW M4 Hatasız"},
+                new Car{Id = 2,BrandId=2,ColorId=1,ModelYear=2015,DailyPrice=100000,Name="Beyaz Sedan Renault Clio Hatasız"},
+                new Car{Id = 3,BrandId=3,ColorId=2,ModelYear=2021,DailyPrice=185000,Name="Mavi Station Mercedes C180 Kazalı"},
+                new Car{Id = 4,BrandId=2,ColorId=3,ModelYear=2020,DailyPrice=210000,Name="Siyah Sedan Renault Captur Hatasız"},
+                new Car{Id = 5,BrandId=5,ColorId=4,ModelYear=2018,DailyPrice=195000,Name="Beyaz Sedan Ford Focus Hasarlı"},
+                new Car{Id = 6,BrandId=3,ColorId=3,ModelYear=2010,DailyPrice=200000,Name="Siyah Station Mercedes E220 Hatasız"},
             };
         }
         public void Add(Car car)
@@ -55,6 +56,11 @@ namespace DataAccess.Concrete.InMemory
             return Convert.ToInt32(_cars.Where(c => c.Id == car.Id));
         }
 
+        public List<CarDetailDto> GetCarDetails()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Car car)
         {
             Car carToUpdate = _cars.SingleOrDefault(c => c.Id == car.Id);
@@ -62,7 +68,7 @@ namespace DataAccess.Concrete.InMemory
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.ModelYear = car.ModelYear;
             carToUpdate.DailyPrice = car.DailyPrice;
-            carToUpdate.Description = car.Description;
+            carToUpdate.Name = car.Name;
         }
     }
 }
